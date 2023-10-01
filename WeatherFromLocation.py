@@ -8,7 +8,6 @@ def get_location():
     url = f"https://api.ipgeolocation.io/ipgeo?apiKey={api_key}&ip={ip_address}"
     response = requests.get(url).json()
     data = response
-    print(data)
 #    print(url)
 
     return data
@@ -20,7 +19,6 @@ def weather(loc):
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        print(data)
         temperature = data['main']['temp']
         temperature -=  273.15
         temperature = round(temperature,2)
@@ -32,9 +30,7 @@ def weather(loc):
 if __name__ == "__main__":
     print("Started")
     location_data = get_location()
-    print(location_data)
     print(f"city is {location_data['city']}")
-    
     weather(location_data['city'])
     print("Done")
     
