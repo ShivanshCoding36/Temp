@@ -1,7 +1,12 @@
 import requests
 def get_location():
-
-    ip_address = requests.get("https://api.ipify.org").text
+    url = "https://api.ipify.org"
+    headers = {
+        "User-Agent": "Mozilla/5.0",  # Specify a User-Agent header to identify your request
+        "Accept": "application/json"  # Specify the type of response you expect (JSON, in this case)
+    }
+    response = requests.get(url, headers=headers)
+    ip_address = response.text
 #    print("IP obtained",ip_address)
 
     api_key = "IP Geolocation api key"
